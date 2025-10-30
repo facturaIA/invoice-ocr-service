@@ -1,0 +1,46 @@
+# Railway Configuration for Invoice OCR Service
+# https://docs.railway.app/deploy/config-as-code
+
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+startCommand = "./server"
+healthcheckPath = "/health"
+healthcheckTimeout = 30
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 3
+
+# Memory optimization for Railway free tier
+[deploy.memory]
+limit = 512
+request = 256
+
+# Environment variables (set these in Railway Dashboard)
+[env]
+# Required - will be set via Railway dashboard
+GEMINI_API_KEY = { required = true }
+
+# Optional - with defaults
+PORT = { default = "8080" }
+HOST = { default = "0.0.0.0" }
+TESSERACT_LANG = { default = "spa+eng" }
+MAX_FILE_SIZE = { default = "10485760" }  # 10MB in bytes
+PROCESSING_TIMEOUT = { default = "30" }    # seconds
+AI_DEFAULT_PROVIDER = { default = "gemini" }
+GEMINI_MODEL = { default = "gemini-pro" }
+
+# Feature flags
+ENABLE_VISION_MODEL = { default = "false" }
+ENABLE_DEBUG_MODE = { default = "false" }
+
+# Railway-specific
+RAILWAY_ENVIRONMENT = { required = false }
+RAILWAY_SERVICE_NAME = { required = false }
+
+# Health check configuration
+[healthcheck]
+path = "/health"
+interval = 30
+timeout = 10

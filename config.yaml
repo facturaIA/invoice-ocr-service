@@ -1,0 +1,43 @@
+# Invoice OCR Service Configuration
+
+# Server configuration
+port: 8080
+host: "0.0.0.0"
+
+# OCR configuration
+ocr:
+  engine: "tesseract"  # or "easyocr"
+  language: "eng"      # Tesseract language (eng, spa, fra, deu, etc.)
+
+# AI configuration
+ai:
+  default_provider: "openai"  # openai, gemini, or ollama
+
+  # OpenAI configuration
+  openai:
+    api_key: "${OPENAI_API_KEY}"  # Set via environment variable
+    base_url: ""                   # Optional: for custom OpenAI-compatible endpoints
+    model: "gpt-4"                 # gpt-4, gpt-4-vision-preview, gpt-3.5-turbo
+
+  # Google Gemini configuration
+  gemini:
+    api_key: "${GEMINI_API_KEY}"   # Set via environment variable
+    model: "gemini-pro"             # gemini-pro or gemini-pro-vision
+
+  # Ollama (local) configuration
+  ollama:
+    base_url: "http://localhost:11434"
+    model: "mistral"                # mistral, llama2, phi, etc.
+
+# Categories for better extraction accuracy
+categories:
+  - "Food & Dining"
+  - "Transportation"
+  - "Shopping"
+  - "Entertainment"
+  - "Healthcare"
+  - "Utilities"
+  - "Housing"
+  - "Education"
+  - "Services"
+  - "Other"
