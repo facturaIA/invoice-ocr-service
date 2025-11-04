@@ -22,6 +22,8 @@ vendor/
 # Config
 config.local.yaml
 .env
+.env.local
+.env.*.local
 
 # Logs
 *.log

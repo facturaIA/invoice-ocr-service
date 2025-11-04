@@ -2,6 +2,8 @@
 
 A **simplified, production-ready microservice** for invoice/receipt OCR and AI-powered data extraction. Based on [Receipt Wrangler](https://github.com/Receipt-Wrangler/receipt-wrangler-api) but streamlined to focus solely on the core OCR and AI extraction functionality.
 
+**GitHub Repository:** https://github.com/facturaIA/invoice-ocr-service
+
 ## Overview
 
 This microservice provides a **single HTTP endpoint** that accepts an invoice image and returns structured JSON data extracted using OCR and AI.
